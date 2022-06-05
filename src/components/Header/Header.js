@@ -20,12 +20,30 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <LinkText>Sale</LinkText>
+            <LinkText>Sale</LinkText>
+          </NavLink>
+          <NavLink href="/new">
+            <LinkText>New&nbsp;Releases</LinkText>
+            <LinkText>New&nbsp;Releases</LinkText>
+          </NavLink>
+          <NavLink href="/men">
+            <LinkText>Men</LinkText>
+            <LinkText>Men</LinkText>
+          </NavLink>
+          <NavLink href="/women">
+            <LinkText>Women</LinkText>
+            <LinkText>Women</LinkText>
+          </NavLink>
+          <NavLink href="/kids">
+            <LinkText>Kids</LinkText>
+            <LinkText>Kids</LinkText>
+          </NavLink>
+          <NavLink href="/collections">
+            <LinkText>Collections</LinkText>
+            <LinkText>Collections</LinkText>
+          </NavLink>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -123,6 +141,40 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: var(--color-secondary);
+  }
+
+  position: relative;
+  overflow: hidden;
+`;
+
+const LinkText = styled.p`
+  ${NavLink} &:last-of-type {
+    display: none;
+  }
+
+  @media(prefers-reduced-motion: no-preference) {
+    ${NavLink} &:first-of-type {
+      transform: translateY(0px);
+      transition: transform 200ms ease-out;
+    }
+  
+    ${NavLink}:hover &:first-of-type {
+      transform: translateY(-100%);
+      transition: transform 200ms ease-in;
+    }
+  
+    ${NavLink} &:last-of-type {
+      display: inline;
+      position: absolute;
+      transform: translateY(0px);
+      transition: transform 200ms ease-out;
+      font-weight: ${WEIGHTS.bold}
+    }
+  
+    ${NavLink}:hover &:last-of-type {
+      transform: translateY(-100%);
+      transition: transform 200ms ease-in;
+    }
   }
 `;
 
